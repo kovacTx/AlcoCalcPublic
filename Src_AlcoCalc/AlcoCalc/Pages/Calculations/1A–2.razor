@@ -1,0 +1,32 @@
+﻿@page "/1A-2"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1A-2</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1A-2</h1>
+
+<p role="status" class="centerHorizontally">1A-2: Prepočet hmotnostného zlomku na objemovú koncentráciu etanolu pri 20 °C</p>
+
+<MudStack Class="mx-5">
+    <MudTextField @ref="ethanolMassFractionInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1A_2.EthanolMassFractionMin} do {Calculator1A_2.EthanolMassFractionMax}")" Label="Hmotnostný zlomok etanolu [%]"
+                  Value="@ethanolMassFraction"
+                  ValueChanged="OnEthanolMassFractionChanged" OnBlur="OnEthanolMassFractionBlur" OnKeyDown="OnEthanolMassFractionKeyDown" />
+
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudStack Row>
+            <MudTextField @ref="result" ReadOnly="true"
+                          Value="@ResultStr" Label="Objemová koncentrácia etanolu pri 20°C [%]" Variant="Variant.Outlined"
+                          OnKeyDown="OnResultKeyDown"/>
+            @if (Returner.WillReturn)
+            {
+                <div style="display:flex;align-items:center;">
+                    <MudFab StartIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="@TryReturn" />
+                </div>
+            }
+        </MudStack>
+    </MudPaper>
+</MudStack>

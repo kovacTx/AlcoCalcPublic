@@ -1,0 +1,44 @@
+﻿@page "/1A-1"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1A-1</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1A-1</h1>
+
+<p role="status" class="centerHorizontally">1A-1: Výpočet hustoty liehu z hmotnostného zlomku etanolu a teploty</p>
+
+<MudStack Class="mx-5">
+    <MudStack Row>
+        <MudTextField @ref="ethanolMassFractionInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      HelperText="@($"od {Calculator1A_1.EthanolMassFractionMin} do {Calculator1A_1.EthanolMassFractionMax}")" Label="Hmotnostný zlomok etanolu [%]"
+                      Value="@ethanolMassFraction"
+                      ValueChanged="OnEthanolMassFractionChanged" OnBlur="OnEthanolMassFractionBlur" OnKeyDown="OnEthanolMassFractionKeyDown" />
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudTooltip Text="Z objemovej koncentrácie">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1A-3"
+                                OnClick="@(() => GoTo("/1A-3", SetEthanolMassFraction))" />
+            </MudTooltip>
+        </MudFabMenu>
+    </MudStack>
+    <MudTextField @ref="alcoholTemperatureInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1A_1.AlcoholTemperatureMin} do {Calculator1A_1.AlcoholTemperatureMax}")" Label="Teplota liehu [°C]"
+                  Value="@alcoholTemperature"
+                  ValueChanged="OnAlcoholTemperatureChanged" OnBlur="OnAlcoholTemperatureBlur" OnKeyDown="OnAlcoholTemperatureKeyDown" />
+
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudStack Row>
+            <MudTextField @ref="result" ReadOnly="true"
+                          Value="@ResultStr" Label="Hustota liehu [kg/m^3]" Variant="Variant.Outlined"
+                          OnKeyDown="OnResultKeyDown" />
+            @if (Returner.WillReturn)
+            {
+                <div style="display:flex;align-items:center;">
+                    <MudFab StartIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="@TryReturn" />
+                </div>
+            }
+        </MudStack>
+    </MudPaper>
+</MudStack>

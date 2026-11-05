@@ -1,0 +1,41 @@
+﻿@page "/2-3/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>2-3</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 2-3
+        </h2>
+        <h1>
+            Výpočet korekcie na tepelnú rozťažnosť meradla objemu
+        </h1>
+
+        <p>
+            Tabuľka slúži na určenie korekčného súčiniteľa <i>F</i><sub>b</sub> na teplotnú rozťažnosť materiálu bubna
+            objemového liehového meradla, počítaného podľa vzťahu:
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="F_b = 1 + \beta_m \times (t-t_0)" />
+        </section>
+
+        <p>Kde:</p>
+
+        <ul>
+            <li>
+                <i>β</i><sub>m</sub> – teplotný súčiniteľ objemovej rozťažnosti materiálu meradla v °C⁻¹
+                (nehrdzavejúca oceľ alebo británium);
+            </li>
+            <li>
+                <i>t</i> – teplota merania v °C;
+            </li>
+            <li>
+                <i>t</i><sub>0</sub> – referenčná teplota, <i>t</i><sub>0</sub> = 20 °C.
+            </li>
+        </ul>
+    </article>
+</div>

@@ -1,0 +1,215 @@
+﻿@page "/"
+
+<PageTitle>AlcoCALC - Alkoholometrické tabuľky</PageTitle>
+
+<div class="alcocalc-home">
+    <main class="alcocalc-content">
+        <div class="alcocalc-text">
+            <h1>AlcoCALC</h1>
+            <h2>Alkoholometrické tabuľky</h2>
+
+            <div class="alcocalc-description">
+                <p class="alcocalc-intro">
+                    spracované v súlade s medzinárodným odporúčaním <strong>OIML R 22 International alcoholometric tables</strong>
+                    a prílohou č. 57 Vyhlášky ÚNMS SR č. 161/2019 Z. z. o meradlách a metrologickej kontrole v znení neskorších
+                    predpisov.
+                </p>
+
+                <p>
+                    AlcoCALC je webovská aplikácia programu na prepočet hustoty liehu. Slúži na uľahčenie aplikácie a pohodlnejšie
+                    používanie oficiálnych tabuliek.
+                </p>
+
+                <p class="alcocalc-support">
+                    Spracované s podporou Úradu pre normalizáciu, metrológiu a skúšobníctvo ako úloha rozvoja metrológie č.
+                    <span class="task-number">XXX</span>
+                </p>
+            </div>
+
+            <a class="alcocalc-button" href="/prepocty">
+                <span>Prejsť na jednotlivé prepočty</span>
+                <span class="button-arrow">→</span>
+            </a>
+        </div>
+
+        <div class="alcocalc-icon">
+            <img src="images/alcocalc-icon.png" alt="AlcoCALC" />
+        </div>
+    </main>
+
+</div>
+
+<style>
+    .alcocalc-home {
+        min-height: calc(100vh - 64px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 48px 32px 24px;
+        box-sizing: border-box;
+    }
+
+    .alcocalc-content {
+        width: 100%;
+        max-width: 1150px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 450px);
+        align-items: center;
+        gap: clamp(32px, 6vw, 80px);
+    }
+
+    .alcocalc-text {
+        min-width: 0;
+    }
+
+    .alcocalc-content h1 {
+        margin: 0;
+        font-size: clamp(2.8rem, 5vw, 4.5rem);
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        line-height: 1.15;
+        color: var(--mud-palette-primary);
+    }
+
+    .alcocalc-content h2 {
+        margin: 12px 0 32px;
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        font-weight: 400;
+        line-height: 1.4;
+    }
+
+    .alcocalc-description {
+        max-width: 700px;
+        line-height: 1.8;
+    }
+
+    .alcocalc-description p {
+        margin: 0 0 24px;
+    }
+
+    .alcocalc-intro {
+        font-size: 1.05rem;
+    }
+
+    .alcocalc-support {
+        margin-top: 32px !important;
+        font-size: 0.95rem;
+    }
+
+    .task-number {
+        display: inline-block;
+        padding: 1px 8px;
+        margin-left: 4px;
+        border-radius: 4px;
+        background: #ffeb3b;
+        color: #222;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+    }
+
+    .alcocalc-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 20px;
+        padding: 15px 24px;
+        border-radius: 8px;
+        background: var(--mud-palette-primary);
+        color: var(--mud-palette-primary-text);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .alcocalc-button,
+    .alcocalc-button:hover,
+    .alcocalc-button:focus,
+    .alcocalc-button:active {
+        color: var(--mud-palette-primary-text);
+        text-decoration: none;
+        background: var(--mud-palette-primary);
+    }
+
+    .alcocalc-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .alcocalc-icon img {
+        display: block;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        object-fit: contain;
+        opacity: 1;
+        filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.12));
+    }
+
+    .task-number {
+        display: inline-block;
+        padding: 1px 8px;
+        margin-left: 4px;
+        border-radius: 4px;
+        background: #ffeb3b;
+        color: #222;
+        font-weight: 800;
+    }
+
+    .alcocalc-footer {
+        margin-top: auto;
+        padding-top: 40px;
+        text-align: center;
+        font-size: 0.8rem;
+        opacity: 0.55;
+        letter-spacing: 0.08em;
+    }
+
+    @@media (max-width: 860px) {
+        .alcocalc-home {
+            padding: 32px 20px 20px;
+        }
+
+        .alcocalc-content {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .alcocalc-icon {
+            grid-row: 1;
+        }
+
+        .alcocalc-icon img {
+            max-width: 320px;
+            margin-top: -50px;
+            margin-bottom: -50px;
+        }
+
+        .alcocalc-text {
+            grid-row: 2;
+            text-align: center;
+        }
+
+        .alcocalc-content h2 {
+            margin-bottom: 24px;
+        }
+
+        .alcocalc-button {
+            width: 100%;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+    }
+
+    @@media (max-width: 700px) {
+        .alcocalc-icon img {
+            max-width: 180px;
+            margin-top: -30px;
+            margin-bottom: -30px;
+        }
+    }
+</style>

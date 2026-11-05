@@ -1,0 +1,39 @@
+﻿@page "/1A-6"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1A-6</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1A-6</h1>
+
+<p role="status" class="centerHorizontally">1A-6: Výpočet hustoty vzduchu</p>
+
+<MudStack Class="mx-5">
+    <MudTextField @ref="atmosphericPressureInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1A_6.AtmosphericPressureMin} do {Calculator1A_6.AtmosphericPressureMax}")" Label="Atmosférický tlak [hPa]"
+                  Value="@atmosphericPressure"
+                  ValueChanged="OnAtmosphericPressureChanged" OnBlur="OnAtmosphericPressureBlur" OnKeyDown="OnAtmosphericPressureKeyDown" />
+    <MudTextField @ref="airTemperatureInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Teplota vzduchu [°C]"
+                  Value="@airTemperature"
+                  ValueChanged="OnAirTemperatureChanged" OnBlur="OnAirTemperatureBlur" OnKeyDown="OnAirTemperatureKeyDown" />
+    <MudTextField @ref="relativeHumidityInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1A_6.RelativeHumidityMin} do {Calculator1A_6.RelativeHumidityMax}")" Label="Relatívna vlhkosť [%r.v.]"
+                  Value="@relativeHumidity"
+                  ValueChanged="OnRelativeHumidityChanged" OnBlur="OnRelativeHumidityBlur" OnKeyDown="OnRelativeHumidityKeyDown" />
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudStack Row>
+            <MudTextField @ref="result" ReadOnly="true"
+                          Value="@ResultStr" Label="Hustota vzduchu [kg/m^3]" Variant="Variant.Outlined"
+                          OnKeyDown="OnResultKeyDown"/>
+            @if (Returner.WillReturn)
+            {
+                <div style="display:flex;align-items:center;">
+                    <MudFab StartIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="@TryReturn" />
+                </div>
+            }
+        </MudStack>
+    </MudPaper>
+</MudStack>

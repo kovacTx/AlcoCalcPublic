@@ -1,0 +1,48 @@
+﻿@page "/2-1"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>2-1</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">2-1</h1>
+
+<p role="status" class="centerHorizontally">2-1: Výpočet objemu etanolu zo zdanlivej hmotnosti liehu a objemovej koncentrácie pri 20°C</p>
+
+<MudStack Class="mx-5">
+    <MudTextField @ref="apparentMassInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Zdanlivá hmotnosť liehu (zmesi) [kg]"
+                  Value="@apparentMass"
+                  ValueChanged="OnApparentMassChanged" OnBlur="OnApparentMassBlur" OnKeyDown="OnApparentMassKeyDown" />
+
+    <MudStack Row>
+        <MudTextField @ref="volumeConcentrationInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      HelperText="@($"od {Calculator2_1.VolumeConcentrationMin} do {Calculator2_1.VolumeConcentrationMax}")" Label="Objemová koncentrácia pri 20°C [%]"
+                      Value="@volumeConcentration"
+                      ValueChanged="OnVolumeConcentrationChanged" OnBlur="OnVolumeConcentrationBlur" OnKeyDown="OnVolumeConcentrationKeyDown" />
+
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudTooltip Text="Z hmotnostného zlomku">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1A-2"
+                                OnClick="@(() => GoTo("/1A-2", SetVolumeConcentration))" />
+            </MudTooltip>
+            <MudTooltip Text="Z údaja hustomera">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1B-1"
+                                OnClick="@(() => GoTo("/1B-1", SetVolumeConcentration))" />
+            </MudTooltip>
+            <MudTooltip Text="Z údaja liehomera">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1B-2"
+                                OnClick="@(() => GoTo("/1B-2", SetVolumeConcentration))" />
+            </MudTooltip>
+        </MudFabMenu>
+    </MudStack>
+    
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudTextField @ref="result" ReadOnly="true"
+                      Value="@ResultStr" Label="Prevodový koeficient km [dm^3/kg]" Variant="Variant.Outlined"
+                      OnKeyDown="OnResultKeyDown"/>
+        <MudTextField @ref="result2" ReadOnly="true"
+                      Value="@VolumeOfEtanolStr" Label="Objem etanolu [dm^3]" Variant="Variant.Outlined"
+                      OnKeyDown="OnResult2KeyDown"/>
+    </MudPaper>
+</MudStack>

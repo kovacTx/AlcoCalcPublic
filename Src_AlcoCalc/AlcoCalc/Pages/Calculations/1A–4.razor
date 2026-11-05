@@ -1,0 +1,36 @@
+﻿@page "/1A-4"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1A-4</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1A-4</h1>
+
+<p role="status" class="centerHorizontally">1A-4: Výpočet korekcie na tepelnú rozťažnosť pyknometra</p>
+
+<MudStack Class="mx-5">
+    <MudSelect T="PyknometerMaterial" @bind-Value="Material"
+               Label="Materiál pyknometra"
+               Variant="Variant.Outlined">
+        @foreach (var material in materials)
+        {
+            <MudSelectItem Value="@material">@material.Name</MudSelectItem>
+        }
+    </MudSelect>
+    <MudTextField @ref="thermalExpansionCoefficientInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1A_4.ThermalExpansionCoefficientMin} do {Calculator1A_4.ThermalExpansionCoefficientMax}")" Label="Teplotný koeficient objemovej rozťažnosti 1/°C"
+                  Value="@thermalExpansionCoefficient"
+                  ValueChanged="OnThermalExpansionCoefficientChanged" OnBlur="OnThermalExpansionCoefficientBlur" OnKeyDown="OnThermalExpansionCoefficientKeyDown" />
+
+    <MudTextField @ref="temperatureOfMeasurementInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1A_4.TemperatureOfMeasurementMin} do {Calculator1A_4.TemperatureOfMeasurementMax}")" Label="Teplota liehu [°C]"
+                  Value="@temperatureOfMeasurement"
+                  ValueChanged="OnTemperatureOfMeasurementChanged" OnBlur="OnTemperatureOfMeasurementBlur" OnKeyDown="OnTemperatureOfMeasurementKeyDown" />
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudTextField @ref="result" ReadOnly="true"
+                      Value="@ResultStr" Label="Korekčný súčiniťeľ Fb na teplotnú rozťažnosť" Variant="Variant.Outlined"
+                      OnKeyDown="OnResultKeyDown" />
+    </MudPaper>
+</MudStack>

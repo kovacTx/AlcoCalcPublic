@@ -1,0 +1,52 @@
+﻿@page "/1A-7/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>1A-7</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 1A – 7
+        </h2>
+        <h1>
+            Výpočet objemu vody zo zdanlivej hmotnosti
+        </h1>
+
+        <p>
+            Tabuľka sa používa na určenie objemu vody zo známej zdanlivej hmotnosti <i>m</i> a teploty vody. Objem vody
+            <i>V</i><sub>w</sub> v dm³ sa vypočíta podľa vzťahu:
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="V_w = F_a \times \frac{m}{\rho_w} \times 1000 = k_w \times m" />
+        </section>
+
+        <p>Kde:</p>
+
+        <ul>
+            <li>
+                <i>F</i><sub>a</sub> – korekčný súčiniteľ na vztlak vzduchu pri vážení podľa Tab. 1A – 5;
+            </li>
+            <li>
+                <i>m</i> – zdanlivá hmotnosť vody v kg;
+            </li>
+            <li>
+                <i>ρ</i><sub>w</sub> – hustota vody v kg/m³ podľa Tab. 1A – 8;
+            </li>
+            <li>
+                <i>k</i><sub>w</sub> – prevodový koeficient v dm³/kg, pre ktorý platí:
+            </li>
+        </ul>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="k_w = \frac{F_a}{\rho_w} \times 1000" />
+        </section>
+
+        <p>
+            Výpočet prevodového koeficienta <i>k</i><sub>w</sub> platí pre hustotu vzduchu (1 až 1,3) kg/m³ a teplotu vody (0 až 40) °C.
+        </p>
+
+    </article>
+</div>

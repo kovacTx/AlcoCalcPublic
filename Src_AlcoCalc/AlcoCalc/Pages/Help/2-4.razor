@@ -1,0 +1,62 @@
+﻿@page "/2-4/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>2-4</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 2-4
+        </h2>
+        <h1>
+            Výpočet objemu etanolu z objemu zmesi zisteného kontrolným liehovým meradlom
+        </h1>
+
+        <p>
+            Tabuľka slúži na určenie objemového množstva etanolu zo známeho objemu liehu (zmesi), zisteného pomocou objemového liehového
+            meradla, teploty a objemovej koncentrácie pri 20 °C. Objem etanolu <i>V</i><sub>E</sub> v dm³ sa vypočíta podľa vzťahu:
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="V_E = k_v \times \left[ (V_m + V_z) \times F_b \times K_b + V_{nm} \right]" />
+        </section>
+
+        <p>Kde:</p>
+
+        <ul>
+            <li>
+                <i>V</i><sub>m</sub> – objem liehu (zmesi) zmeraný kontrolným liehovým meradlom pri teplote <i>t</i> v dm³;
+            </li>
+            <li>
+                <i>V</i><sub>z</sub> – rozdiel stavov záložného počítadla liehového meradla v dm³;
+            </li>
+            <li>
+                <i>V</i><sub>nm</sub> – objem liehu nezaznamenaný počítadlami kontrolného liehového meradla v dm³;
+            </li>
+            <li>
+                <i>F</i><sub>b</sub> – korekčný súčiniteľ na teplotnú rozťažnosť kontrolného liehového meradla podľa Tab. 2 – 3;
+            </li>
+            <li>
+                <i>K</i><sub>b</sub> – korekčný súčiniteľ na chybu údaja liehového meradla zistenú pri jeho overení;
+            </li>
+            <li>
+                <i>k</i><sub>v</sub> – prevodový koeficient v dm³/dm³, pre ktorý platí:
+            </li>
+        </ul>
+
+
+        <section class="formula-section">
+            <Formula FormulaLatex="k_v = \frac{\sigma_E}{100} \times \frac{\rho}{\rho_{20}}" />
+        </section>
+
+        <p>
+            Význam symbolov vo vzťahu pre prevodový koeficient je rovnaký ako v Tab. 2 – 2.
+        </p>
+
+        <p>
+            Vzorec bol prevzatý z § 8 ods. 2 vyhlášky Ministerstva financií SR č. 226/2004 Z. z.
+        </p>
+    </article>
+</div>

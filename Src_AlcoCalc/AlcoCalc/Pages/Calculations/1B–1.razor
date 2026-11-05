@@ -1,0 +1,36 @@
+﻿@page "/1B-1"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1B-1</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1B-1</h1>
+
+<p role="status" class="centerHorizontally">1B-1: Výpočet objemovej koncentrácie etanolu pri 20°C z údaja hustomera a teploty merania</p>
+
+<MudStack Class="mx-5">
+    <MudTextField @ref="densityInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1B_1.DensityMin} do {Calculator1B_1.DensityMax}")" Label="Údaj hustomera [kg/m^3]"
+                  Value="@density"
+                  ValueChanged="OnDensityChanged" OnBlur="OnDensityBlur" OnKeyDown="OnDensityKeyDown" />
+
+    <MudTextField @ref="temperatureOfMeasurementInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1B_1.TemperatureOfMeasurementMin} do {Calculator1B_1.TemperatureOfMeasurementMax}")" Label="Teplota merania [°C]"
+                  Value="@temperatureOfMeasurement"
+                  ValueChanged="OnTemperatureOfMeasurementChanged" OnBlur="OnTemperatureOfMeasurementBlur" OnKeyDown="OnTemperatureOfMeasurementKeyDown" />
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudStack Row>
+            <MudTextField @ref="result" ReadOnly="true"
+                          Value="@ResultStr" Label="Objemová koncentrácia etanolu pri 20°C [%]" Variant="Variant.Outlined"
+                          OnKeyDown="OnResultKeyDown"/>
+            @if (Returner.WillReturn)
+            {
+                <div style="display:flex;align-items:center;">
+                    <MudFab StartIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="@TryReturn" />
+                </div>
+            }
+        </MudStack>
+    </MudPaper>
+</MudStack>

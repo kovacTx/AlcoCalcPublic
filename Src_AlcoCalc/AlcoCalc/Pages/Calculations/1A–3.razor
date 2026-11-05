@@ -1,0 +1,47 @@
+﻿@page "/1A-3"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1A-3</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1A-3</h1>
+
+<p role="status" class="centerHorizontally">1A-3: Prepočet objemovej koncentrácie pri 20 °C na hmotnostný zlomok etanolu</p>
+
+<MudStack Class="mx-5">
+    <MudStack Row>
+        <MudTextField @ref="volumeConcentrationInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      HelperText="@($"od {Calculator1A_1.EthanolMassFractionMin} do {Calculator1A_1.EthanolMassFractionMax}")" Label="Objemová koncentrácia pri 20°C [%]"
+                      Value="@volumeConcentration"
+                      ValueChanged="OnVolumeConcentrationChanged" OnBlur="OnVolumeConcentrationBlur" OnKeyDown="OnVolumeConcentrationKeyDown" />
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudTooltip Text="Z hmotnostného zlomku">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1A-2"
+                                OnClick="@(() => GoTo("/1A-2", SetVolumeConcentration))" />
+            </MudTooltip>
+            <MudTooltip Text="Z údaja hustomera">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1B-1"
+                                OnClick="@(() => GoTo("/1B-1", SetVolumeConcentration))" />
+            </MudTooltip>
+            <MudTooltip Text="Z údaja liehomera">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1B-2"
+                                OnClick="@(() => GoTo("/1B-2", SetVolumeConcentration))" />
+            </MudTooltip>
+        </MudFabMenu>
+    </MudStack>
+    
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudStack Row>
+            <MudTextField @ref="result" ReadOnly="true"
+                          Value="@ResultStr" Label="Hmotnostný zlomok etanolu [%]" Variant="Variant.Outlined"
+                          OnKeyDown="OnResultKeyDown"/>
+            @if (Returner.WillReturn)
+            {
+                <div style="display:flex;align-items:center;">
+                    <MudFab StartIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="@TryReturn" />
+                </div>
+            }
+        </MudStack>
+    </MudPaper>
+</MudStack>

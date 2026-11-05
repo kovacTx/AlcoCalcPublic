@@ -1,0 +1,54 @@
+﻿@page "/2-1/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>2-1</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 2-1
+        </h2>
+        <h1>
+            Výpočet objemu etanolu zo zdanlivej hmotnosti liehu (zmesi)
+        </h1>
+
+        <p>
+            Tabuľka slúži na určenie objemového množstva etanolu zo známej zdanlivej hmotnosti <i>m</i> a objemovej koncentrácie pri 20 °C.
+            Objem etanolu <i>V</i><sub>E</sub> v dm³ sa vypočíta podľa vzťahu:
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="V_E = \frac{\sigma_E}{100} \times F_a \times \frac{m}{\rho_{20}} \times 1000 = k_m \times m" />
+        </section>
+
+        <p>Kde:</p>
+
+        <ul>
+            <li>
+                <i>F</i><sub>a</sub> – korekčný súčiniteľ na vztlak vzduchu pri vážení podľa Tab. 1A – 5;
+            </li>
+            <li>
+                <i>σ</i><sub>E</sub> – objemová koncentrácia pri 20 °C v %;
+            </li>
+            <li>
+                <i>m</i> – zdanlivá hmotnosť liehu (zmesi) v kg;
+            </li>
+            <li>
+                <i>ρ</i><sub>20</sub> – hustota liehu (zmesi) pri 20 °C v kg/m³ podľa Tab. 1A – 1;
+            </li>
+            <li>
+                <i>k</i><sub>m</sub> – prevodový koeficient v dm³/kg, pre ktorý platí:
+            </li>
+        </ul>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="k_m = \sigma_E \times \frac{F_a}{\rho} \times 10" />
+        </section>
+
+        <p>
+            Vzorec bol prevzatý z odporúčania OIML R 22, príloha I, vzorec k Tab. XII b.
+        </p>
+    </article>
+</div>

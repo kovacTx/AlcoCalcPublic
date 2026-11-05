@@ -1,0 +1,36 @@
+﻿@page "/1A-1/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>1A-1</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 1A – 1
+        </h2>
+        <h1>
+            Výpočet hustoty liehu z teploty a hmotnostného zlomku etanolu
+        </h1>
+
+        <p>
+            Základná tabuľka slúži na určenie hustoty liehu ρ (zmesi vody s alkoholom) v závislosti na teplote liehu
+            <i>t</i> a na hmotnostnom zlomku etanolu <i>w</i><sub>E</sub>.
+        </p>
+
+        <p>
+            Hustota bola počítaná podľa medzinárodného vzorca (OIML R 22):
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="\rho=A_1+\sum_{k=2}^{12} A_k w_E^{k-1}+\sum_{k=1}^{6} B_k(t-20)^k+\sum_{i=1}^{n}\sum_{k=1}^{m_i}C_{i,k}w_E^k(t-20)^i" />
+        </section>
+
+        <p>
+            Hodnoty koeficientov <i>A</i><sub>k</sub>, <i>B</i><sub>k</sub> a <i>C</i><sub>i,k</sub> sú uvedené v prílohe
+            č. 16 k vyhláške (prevzaté z Medzinárodného odporúčania OIML R 22).
+        </p>
+
+    </article>
+</div>

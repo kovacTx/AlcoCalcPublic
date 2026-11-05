@@ -1,0 +1,46 @@
+﻿@page "/2-3"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>2-3</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">2-3</h1>
+
+<p role="status" class="centerHorizontally">2-3: Výpočet korekcie na tepelnú rozťažnosť meradla</p>
+
+<MudStack Class="mx-5">
+    <MudSelect T="MeasurementDeviceMaterial" @bind-Value="Material"
+               Label="Materiál meradla"
+               Variant="Variant.Outlined">
+        @foreach (var material in materials)
+        {
+            <MudSelectItem Value="@material">@material.Name</MudSelectItem>
+        }
+    </MudSelect>
+    <MudTextField @ref="thermalExpansionCoefficientInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Teplotný koeficient objemovej rozťažnosti 1/°C"
+                  HelperText="@($"od {Calculator2_3.ThermalExpansionCoefficientMin} do {Calculator2_3.ThermalExpansionCoefficientMax}")"
+                  Value="@thermalExpansionCoefficient"
+                  ValueChanged="OnThermalExpansionCoefficientChanged" OnBlur="OnThermalExpansionCoefficientBlur" OnKeyDown="OnThermalExpansionCoefficientKeyDown" />
+
+    <MudTextField @ref="temperatureOfMeasurementInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Teplota liehu [°C]"
+                  HelperText="@($"od {Calculator2_3.TemperatureOfMeasurementMin} do {Calculator2_3.TemperatureOfMeasurementMax}")"
+                  Value="@temperatureOfMeasurement"
+                  ValueChanged="OnTemperatureOfMeasurementChanged" OnBlur="OnTemperatureOfMeasurementBlur" OnKeyDown="OnTemperatureOfMeasurementKeyDown" />
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudStack Row>
+            <MudTextField @ref="result" ReadOnly="true"
+                          Value="@ResultStr" Label="Korekčný súčiniťeľ Fb na teplotnú rozťažnosť" Variant="Variant.Outlined"
+                          OnKeyDown="OnResultKeyDown"/>
+            @if (Returner.WillReturn)
+            {
+                <div style="display:flex;align-items:center;">
+                    <MudFab StartIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="@TryReturn" />
+                </div>
+            }
+        </MudStack>
+    </MudPaper>
+</MudStack>

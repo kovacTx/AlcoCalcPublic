@@ -1,0 +1,48 @@
+﻿@page "/1A-6/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>1A-6</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 1A – 6
+        </h2>
+        <h1>
+            Výpočet hustoty vzduchu
+        </h1>
+
+        <p>
+            Hustota vzduchu závisí od atmosférického tlaku, teploty a relatívnej vlhkosti vzduchu. Bola počítaná
+            podľa vzorca:
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="\rho_v = \frac{1}{273{,}15+t_v}\times\left(0{,}003483651\times b-0{,}00131689\times e\times\frac{U}{100}\right)" />
+        </section>
+
+        <p>Kde:</p>
+
+        <ul>
+            <li>
+                <i>b</i> – atmosférický tlak v Pa;
+            </li>
+            <li>
+                <i>U</i> – relatívna vlhkosť vzduchu v %;
+            </li>
+            <li>
+                <i>t</i><sub>v</sub> – teplota vzduchu v °C;
+            </li>
+            <li>
+                <i>e</i> – parciálny tlak pár vo vzduchu v Pa, pre ktorý platí:
+            </li>
+        </ul>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="e = 691{,}12\,\exp\left(0{,}0607851\,t_v\right)" />
+        </section>
+
+    </article>
+</div>

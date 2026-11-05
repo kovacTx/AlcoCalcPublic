@@ -1,0 +1,36 @@
+﻿@page "/1B-2"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1B-2</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1B-2</h1>
+
+<p role="status" class="centerHorizontally">1B-2: Výpočet objemovej koncentrácie etanolu pri 20°C z údaja liehomera a teploty merania</p>
+
+<MudStack Class="mx-5">
+    <MudTextField @ref="alcoholometerReadingInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1B_2.AlcoholometerReadingMin} do {Calculator1B_2.AlcoholometerReadingMax}")" Label="Údaj liehomera [%]"
+                  Value="@alcoholometerReading"
+                  ValueChanged="OnAlcoholometerReadingChanged" OnBlur="OnAlcoholometerReadingBlur" OnKeyDown="OnAlcoholometerReadingKeyDown" />
+
+    <MudTextField @ref="temperatureInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1B_2.TemperatureMin} do {Calculator1B_2.TemperatureMax}")" Label="Údaj teplomera [°C]"
+                  Value="@temperature"
+                  ValueChanged="OnTemperatureChanged" OnBlur="OnTemperatureBlur" OnKeyDown="OnTemperatureKeyDown" />
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudStack Row>
+            <MudTextField @ref="result" ReadOnly="true"
+                          Value="@ResultStr" Label="Objemová koncentrácia etanolu pri 20°C [%]" Variant="Variant.Outlined"
+                          OnKeyDown="OnResultKeyDown"/>
+            @if (Returner.WillReturn)
+            {
+                <div style="display:flex;align-items:center;">
+                    <MudFab StartIcon="@Icons.Material.Filled.ArrowForward" Color="Color.Primary" OnClick="@TryReturn" />
+                </div>
+            }
+        </MudStack>
+    </MudPaper>
+</MudStack>

@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/
+/Src_AlcoCalc/.vs/
+/Src_AlcoCalc/AlcoCalc/obj/
+/Src_AlcoCalc/AlcoCalc/bin/
+/publish
+/Src_AlcoCalc/AlcoCalc/Properties/PublishProfiles/FolderProfile.pubxml.user
+/Src_AlcoCalc/AlcoCalc/AlcoCalc.csproj.user

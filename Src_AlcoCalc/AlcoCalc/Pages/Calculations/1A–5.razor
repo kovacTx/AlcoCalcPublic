@@ -1,0 +1,47 @@
+﻿@page "/1A-5"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1A-5</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1A-5</h1>
+
+<p role="status" class="centerHorizontally">1A-5: Výpočet korekčného súčiniteľa Fa na vztlak vzduchu pri vážení</p>
+
+<MudStack Class="mx-5">
+    <MudStack Row>
+
+        <MudTextField @ref="liquidDensityInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      HelperText="@($"od {0} do {10000}")" Label="Hustota látky [kg/m^3]"
+                      Value="@liquidDensity"
+                      ValueChanged="OnLiquidDensityChanged" OnBlur="OnLiquidDensityBlur" OnKeyDown="OnLiquidDensityKeyDown" />
+
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudTooltip Text="Z hmotnostného zlomku etanolu a teploty">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary"
+                                Label="1A-1" OnClick="@(() => GoTo("/1A-1", SetLiquidDensity))" />
+            </MudTooltip>
+        </MudFabMenu>
+    </MudStack>
+    <MudStack Row>
+        <MudTextField @ref="airDensityInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      HelperText="@($"od {Calculator1A_5.AirDensityMin} do {Calculator1A_5.AirDensityMax}")" Label="Hustota vzduchu [kg/m^3]"
+                      Value="@airDensity"
+                      ValueChanged="OnAirDensityChanged" OnBlur="OnAirDensityBlur" OnKeyDown="OnAirDensityKeyDown" />
+
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudTooltip Text="Na výpočet hustoty vzduchu">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary"
+                                Label="1A-6" OnClick="@(() => GoTo("/1A-6", SetAirDensity))" />
+            </MudTooltip>
+        </MudFabMenu>
+    </MudStack>
+
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudTextField @ref="result" ReadOnly="true"
+                      Value="@ResultStr" Label="Korekčný súčiniteľ Fa na vztlak vzduchu" Variant="Variant.Outlined"
+                      OnKeyDown="OnResultKeyDown"/>
+    </MudPaper>
+</MudStack>

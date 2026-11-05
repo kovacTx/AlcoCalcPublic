@@ -1,0 +1,42 @@
+﻿@inherits LayoutComponentBase
+@using System.Security.Claims
+@using AlcoCalc.Pages
+@using AlcoCalc.Services
+@using MudBlazor
+
+<MudThemeProvider Theme="Theme" IsDarkMode="IsDarkMode" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<MudLayout>
+    <div class="header">
+        @if (CommonData.HomeButtonVisible)
+        {
+            <MudTooltip Text="Home">
+                <MudFab StartIcon="@Icons.Material.Filled.Home" Color="Color.Primary" OnClick="@GoHome" />
+            </MudTooltip>
+        }
+        @if (CommonData.BackButtonVisible)
+        {
+            <MudTooltip Text="Back">
+                <MudFab StartIcon="@Icons.Material.Filled.ArrowBack" Color="Color.Primary" OnClick="@GoCalculator" />
+            </MudTooltip>
+        }
+        @if (CommonData.ResetButtonVisible)
+        {
+            <MudTooltip Text="Reset">
+                <MudFab StartIcon="@Icons.Material.Filled.RestartAlt" Color="Color.Primary" OnClick="@Reset" />
+            </MudTooltip>
+        }
+    </div>
+    <div class="theme-toggle">
+        <MudTooltip Text="@ThemeChangeTooltip">
+            <MudIconButton Icon="@DarkLightModeButtonIcon" Color="Color.Primary" OnClick="@DarkModeToggle" />
+        </MudTooltip>
+    </div>
+
+    <MudMainContent Style="padding-top: 0; margin: 10px">
+        @Body
+    </MudMainContent>
+</MudLayout>

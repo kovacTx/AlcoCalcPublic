@@ -1,0 +1,59 @@
+﻿@page "/1A-5/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>1A-5</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 1A – 5
+        </h2>
+        <h1>
+            Výpočet korekcie na vztlak vzduchu pri vážení
+        </h1>
+
+        <p>
+            Hodnota korekčného súčiniteľa <i>F</i><sub>a</sub> na vztlak vzduchu pri vážení
+            závisí od hustoty váženej látky <i>ρ</i><sub>s</sub> (napríklad liehu, vody alebo pyknometra), hustoty
+            vzduchu pri vážení <i>ρ</i><sub>v</sub>, štandardnej hustoty vzduchu <i>ρ</i><sub>vo</sub> a štandardnej
+            hustoty závažia <i>ρ</i><sub>z</sub> podľa rovnice:
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="F_a = 1 + \frac{\rho_v}{\rho_s} - \frac{\rho_{vo}}{\rho_z}" />
+        </section>
+
+        <p>
+            Pri výpočte sa použila štandardná hustota vzduchu <i>ρ</i><sub>vo</sub> = 1,2 kg/m³ a štandardná
+            hustota závažia <i>ρ</i><sub>z</sub> = 8000 kg/m³.
+        </p>
+
+        <p>
+            Vzťah pre korekčný súčiniteľ na vztlak vzduchu je napríklad vo vzorci k Tab. XII a a XII b v prílohe I
+            odporúčania OIML R 22.
+        </p>
+
+        <h3>Význam symbolov</h3>
+
+        <ul>
+            <li>
+                <i>F</i><sub>a</sub> – korekčný súčiniteľ na vztlak vzduchu;
+            </li>
+            <li>
+                <i>ρ</i><sub>s</sub> – hustota váženej látky v kg/m³;
+            </li>
+            <li>
+                <i>ρ</i><sub>v</sub> – hustota vzduchu pri vážení v kg/m³;
+            </li>
+            <li>
+                <i>ρ</i><sub>vo</sub> – štandardná hustota vzduchu;
+            </li>
+            <li>
+                <i>ρ</i><sub>z</sub> – štandardná hustota závažia.
+            </li>
+        </ul>
+
+    </article>
+</div>

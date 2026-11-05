@@ -1,0 +1,41 @@
+﻿@page "/1A-7"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>1A-7</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">1A-7</h1>
+
+<p role="status" class="centerHorizontally">1A-7: Výpočet objemu vody zo zdanlivej hmotnosti a teploty</p>
+
+<MudStack Class="mx-5">
+    <MudStack Row>
+        <MudTextField @ref="airDensityInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      HelperText="@($"od {Calculator1A_7.AirDensityMin} do {Calculator1A_7.AirDensityMax}")" Label="Hustota vzduchu [kg/m3]"
+                      Value="@airDensity"
+                      ValueChanged="OnAirDensityChanged" OnBlur="OnAirDensityBlur" OnKeyDown="OnAirDensityKeyDown" />
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="1A-6"
+                            OnClick="@(() => GoTo("/1A-6", SetAirDensity))" />
+        </MudFabMenu>
+    </MudStack>
+    <MudTextField @ref="loadTemperatureInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  HelperText="@($"od {Calculator1A_7.LoadTemperatureMin} do {Calculator1A_7.LoadTemperatureMax}")" Label="Teplota vody [°C]"
+                  Value="@loadTemperature"
+                  ValueChanged="OnLoadTemperatureChanged" OnBlur="OnLoadTemperatureBlur" OnKeyDown="OnLoadTemperatureKeyDown" />
+    <MudTextField @ref="loadWeightInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Hmotnosť vody [kg]"
+                  Value="@loadWeight"
+                  ValueChanged="OnLoadWeightChanged" OnBlur="OnLoadWeightBlur" OnKeyDown="OnLoadWeightKeyDown" />
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudTextField @ref="result" ReadOnly="true"
+                      Value="@ResultStr" Label="Prevodový koeficient kw [dm^3/kg]" Variant="Variant.Outlined"
+                      OnKeyDown="OnResultKeyDown"/>
+        <MudTextField @ref="result2" ReadOnly="true"
+                      Value="@MassVolumeStr" Label="Objem vody [dm^3]" Variant="Variant.Outlined"
+                      OnKeyDown="OnResult2KeyDown"/>
+    </MudPaper>
+
+</MudStack>

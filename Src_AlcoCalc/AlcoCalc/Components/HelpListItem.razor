@@ -1,0 +1,12 @@
+﻿<MudListItem T="string" OnClick="@GoToHref">
+    <div class="d-flex align-center justify-space-between w-100">
+        <span>@ChildContent</span>
+
+        <span @onclick:stopPropagation="true">
+            <MudIconButton Icon="@Icons.Material.Filled.HelpOutline"
+                           Color="Color.Info"
+                           Size="Size.Small"
+                           OnClick="@GoToHelpHref" />
+        </span>
+    </div>
+</MudListItem>

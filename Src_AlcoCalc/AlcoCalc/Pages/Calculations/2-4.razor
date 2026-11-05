@@ -1,0 +1,68 @@
+﻿@page "/2-4"
+@inherits CalcPage
+@using AlcoCalc.Services
+@using AlcoCalc.Values
+
+<PageTitle>2-4</PageTitle>
+
+<h1 class="centerHorizontally mt-15-mobile">2-4</h1>
+
+<p role="status" class="centerHorizontally">2-4: Výpočet objemu etanolu z objemu liehu, objemovej koncentrácie a teploty</p>
+
+<MudStack Class="mx-5">
+    <MudTextField @ref="volumeOfEthanolInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Objem liehu [dm^3]"
+                  Value="@volumeOfEthanol"
+                  ValueChanged="OnVolumeOfEthanolChanged" OnBlur="OnVolumeOfEthanolBlur" OnKeyDown="OnVolumeOfEthanolKeyDown" />
+
+    <MudTextField @ref="meterReadingDifferenceInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Rozdiel stavov záložného počítala meradla [dm^3]"
+                  Value="@meterReadingDifference"
+                  ValueChanged="OnMeterReadingDifferenceChanged" OnBlur="OnMeterReadingDifferenceBlur" OnKeyDown="OnMeterReadingDifferenceKeyDown" />
+
+    <MudTextField @ref="notRecordedVolumeInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Objem nezaznamenaný liehovým meradlom [dm^3]"
+                  Value="@notRecordedVolume"
+                  ValueChanged="OnNotRecordedVolumeChanged" OnBlur="OnNotRecordedVolumeBlur" OnKeyDown="OnNotRecordedVolumeKeyDown" />
+
+    <MudStack Row>
+        <MudTextField @ref="thermalExpansionCorrectionFactorInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      Label="Korekčný súčiniťeľ Fb na teplotnú rozťažnosť"
+                      HelperText="@($"od {Calculator2_4.ThermalExpansionCorrectionFactorMin} do {Calculator2_4.ThermalExpansionCorrectionFactorMax}")"
+                      Value="@thermalExpansionCorrectionFactor"
+                      ValueChanged="OnThermalExpansionCorrectionFactorChanged" OnBlur="OnThermalExpansionCorrectionFactorBlur" OnKeyDown="OnThermalExpansionCorrectionFactorKeyDown" />
+
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudTooltip Text="Z hmotnostného zlomku">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="2-3"
+                                OnClick="@(() => GoTo("/2-3", SetThermalExpansionCorrectionFactor))" />
+            </MudTooltip>
+        </MudFabMenu>
+    </MudStack>
+
+    <MudTextField @ref="alcoholMeterCorrectionFactorInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                  Label="Korekčný súčiniťeľ Kb na chybu liehového meradla"
+                  HelperText="@($"od {Calculator2_4.AlcoholMeterCorrectionFactorMin} do {Calculator2_4.AlcoholMeterCorrectionFactorMax}")"
+                  Value="@alcoholMeterCorrectionFactor"
+                  ValueChanged="OnAlcoholMeterCorrectionFactorChanged" OnBlur="OnAlcoholMeterCorrectionFactorBlur" OnKeyDown="OnAlcoholMeterCorrectionFactorKeyDown" />
+
+    <MudStack Row>
+        <MudTextField @ref="kvCoefficientInput" T="string" Variant="Variant.Outlined" Pattern="[0-9.,\-+]*" Immediate="true" InputMode="@(InputMode.numeric)"
+                      Label="Prevodný koeficient kv v [dm^3/dm^3]"
+                      Value="@kvCoefficient"
+                      ValueChanged="OnKvCoefficientChanged" OnBlur="OnKvCoefficientBlur" OnKeyDown="OnKvCoefficientKeyDown" />
+
+        <MudFabMenu StartIcon="@Icons.Material.Filled.Calculate" Color="Color.Primary" Direction="Direction.Left">
+            <MudTooltip Text="Z hmotnostného zlomku">
+                <MudFabMenuItem Icon="@Icons.Material.Filled.Functions" Color="Color.Secondary" Label="2-2"
+                                OnClick="@(() => GoTo("/2-2", SetKvCoefficient))" />
+            </MudTooltip>
+        </MudFabMenu>
+    </MudStack>
+
+    <MudPaper Class="pa-0 my-0" Outlined="true">
+        <MudTextField @ref="result" ReadOnly="true"
+                      Value="@ResultStr" Label="objem etanolu [dm^3]" Variant="Variant.Outlined"
+                      OnKeyDown="OnResultKeyDown"/>
+    </MudPaper>
+</MudStack>

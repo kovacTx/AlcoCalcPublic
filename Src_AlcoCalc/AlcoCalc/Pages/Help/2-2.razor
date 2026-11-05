@@ -1,0 +1,59 @@
+﻿@page "/2-2/help"
+@inherits HelpPage
+@using AlcoCalc.Components
+
+<PageTitle>2-2</PageTitle>
+
+<div class="density-page">
+    <article class="density-document">
+        
+        <h2>
+            Tab. 2-2
+        </h2>
+        <h1>
+            Výpočet objemu etanolu z objemu zmesi zisteného v stacionárnej nádrži
+        </h1>
+
+        <p>
+            Tabuľka slúži na určenie objemového množstva etanolu zo známeho objemu liehu (zmesi), zmeraného v stacionárnej odmernej nádrži,
+            teploty a objemovej koncentrácie pri 20 °C. Objem etanolu <i>V</i><sub>E</sub> v dm³ sa vypočíta podľa vzťahu:
+        </p>
+
+        <section class="formula-section">
+            <Formula FormulaLatex="V_E = \frac{\sigma_E}{100} \times \frac{\rho}{\rho_{20}} \times V \times \left[ 1 + \beta_m \times ( t - 20 ) \right] = k_v \times V \times F_b" />
+        </section>
+
+        <p>Kde:</p>
+
+        <ul>
+            <li>
+                <i>σ</i><sub>E</sub> – objemová koncentrácia pri 20 °C v %;
+            </li>
+            <li>
+                <i>ρ</i> – hustota liehu (zmesi) pri teplote <i>t</i> v kg/m³ podľa Tab. 1A – 1;
+            </li>
+            <li>
+                <i>ρ</i><sub>20</sub> – hustota liehu (zmesi) pri teplote 20 °C v kg/m³ podľa Tab. 1A – 1;
+            </li>
+            <li>
+                <i>V</i> – objem liehu (zmesi) pri teplote <i>t</i> v dm³;
+            </li>
+            <li>
+                <i>β</i><sub>m</sub> – teplotný súčiniteľ objemovej rozťažnosti materiálu meradla v °C⁻¹ použitého pri meraní. Spolu s teplotou
+                <i>t</i> sa zadáva do Tab. 2 – 3, z ktorej sa získa korekčný súčiniteľ <i>F</i><sub>b</sub>;
+            </li>
+            <li>
+                <i>k</i><sub>v</sub> – prevodový koeficient v dm³/dm³, pre ktorý platí:
+            </li>
+        </ul>
+
+
+        <section class="formula-section">
+            <Formula FormulaLatex="k_v = \frac{\sigma_E}{100} \times \frac{\rho}{\rho_{20}}" />
+        </section>
+
+        <p>
+            Vzorec bol prevzatý z odporúčania OIML R 22, príloha I, vzorec k Tab. XI b.
+        </p>
+    </article>
+</div>
